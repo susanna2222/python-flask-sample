@@ -1,3 +1,4 @@
+pipenv
 flask
 pyinstaller
-virtualenvwrapper
+
