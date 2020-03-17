@@ -20,16 +20,16 @@ jobs:
           command: |
             . helloworld/bin/activate
             python test.py
-      - setup_remote_docker:
+       - setup_remote_docker:
           docker_layer_caching: true
       - run:
           name: Build and push Docker image
           command: |
             . helloworld/bin/activate
             pyinstaller -F app.py
-            docker build -t ariv3ra/$IMAGE_NAME:$TAG .
+            docker build -t sample/$IMAGE_NAME:$TAG .
             echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
-            docker push ariv3ra/$IMAGE_NAME:$TAG
+            docker push sample/$IMAGE_NAME:$TAG
       #- run:
       #    name: Deploy app to Digital Ocean Server via Docker
       #    command: |
