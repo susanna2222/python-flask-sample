@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:2.7.14
+      - image: circleci/python:3.7
         environment:
           FLASK_CONFIG: testing
     steps:
@@ -14,13 +14,13 @@ jobs:
             echo 'export IMAGE_NAME=python-circleci-docker' >> $BASH_ENV 
             virtualenv helloworld
             . helloworld/bin/activate
-            pip install --no-cache-dir -r requirements.txt
+            pip3 install --no-cache-dir -r requirements.txt
       - run:
           name: Run Tests
           command: |
             . helloworld/bin/activate
-            python test.py
-       - setup_remote_docker:
+            python3 test.py
+      - setup_remote_docker:
           docker_layer_caching: true
       - run:
           name: Build and push Docker image
