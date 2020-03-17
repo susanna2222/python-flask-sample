@@ -13,8 +13,8 @@ class TestHelloWorld(unittest.TestCase):
 
     def test_msg(self):
         response = self.app.get('/')
-        msg = app.wrap_heml('Hello Docker!')
-        self.assertEqual(response, msg)
+        msg = app.wrap_html('Hello Docker World!')
+        self.assertEqual(response.data, msg)
 
-if __name__ = '__main__':
+if __name__ == '__main__':
     unitest.main()
